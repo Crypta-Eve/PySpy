@@ -1,7 +1,7 @@
 # !/usr/local/bin/python3.6
 # MIT licensed
 # Copyright (c) 2018 White Russsian
-# Github: <https://github.com/WhiteRusssian/PySpy>**********************
+# Github: <https://github.com/Eve-PySpy/PySpy>**********************
 ''' Define a few paths and constants used throughout other modules.'''
 # **********************************************************************
 import logging.config
@@ -33,6 +33,7 @@ def resource_path(relative_path):
         base_path = os.path.dirname(__file__)
 
     return os.path.join(base_path, relative_path)
+
 
 # If application is frozen executable
 if getattr(sys, 'frozen', False):
@@ -120,7 +121,7 @@ DARK_MODE = {
     "LBL": wx.Colour(160, 160, 160),
     "HL1": wx.Colour(237, 72, 59),  # Red
     "HL2": wx.Colour(62, 157, 250),  # Blue
-    "HL3": wx.Colour(30, 30, 30)  # Dark Grey
+    "HL3": wx.Colour(237, 47, 218)  # Pink
     }
 
 NORMAL_MODE = {
@@ -130,7 +131,7 @@ NORMAL_MODE = {
     "LBL": wx.Colour(32, 32, 32),
     "HL1": wx.Colour(187, 55, 46),
     "HL2": wx.Colour(38, 104, 166),
-    "HL3": wx.Colour(0, 0, 170)
+    "HL3": wx.Colour(237, 47, 218)
     }
 
 # Note, Amarr and Caldari are allied and have IDs ending on uneven integers.

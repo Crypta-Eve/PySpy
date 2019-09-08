@@ -1,19 +1,17 @@
 <!--- // cSpell:words killboard, blops, hics, killboard's, cynos, ccp's, pyspy, psf's, pyperclip, pyinstaller, executables, jojo, unported, killmails --->
 
-# ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `I WILL BE DISCONTINUING THE DAILY KILLMAIL SERVER UPDATES BY THE END OF 2019. Get in touch if you would like to take over. You will need some knowledge in Python, SQLite, and MongoDB. Once setup, it is 100% automatic and extremely low maintenance. I am running this on a Mac Mini but you can make it work on Windows or Linux, too.`
-
 # PySpy - A simple EVE Online character intel tool using CCP's ESI API
 
 <p align="left">
-  <a href=https://github.com/WhiteRusssian/PySpy/releases/latest>
-    <img alt="Current Version" src="https://img.shields.io/github/release/whiterusssian/pyspy.svg">
+  <a href=https://github.com/Eve-PySpy/PySpy/releases/latest>
+    <img alt="Current Version" src="https://img.shields.io/github/release/Eve-PySpy/pyspy.svg">
   </a>
-  <a href=https://github.com/WhiteRusssian/PySpy/releases/latest>
-    <img alt="Number of releases downloaded" src="https://img.shields.io/github/downloads/WhiteRusssian/PySpy/total.svg">
+  <a href=https://github.com/Eve-PySpy/PySpy/releases/latest>
+    <img alt="Number of releases downloaded" src="https://img.shields.io/github/downloads/Eve-PySpy/PySpy/total.svg">
   </a>
 </p>
 
-**Download the latest release [here](https://github.com/WhiteRusssian/PySpy/releases/latest).**
+**Download the latest release [here](https://github.com/Eve-PySpy/PySpy/releases/latest).**
 
 ## Background
 
@@ -31,7 +29,7 @@ If you enjoy using PySpy and would like to show your appreciation, please feel f
 1. Open PySpy.
 2. In your EVE client, select a list of characters and copy them to the clipboard (`CTRL+C` on Windows *or* `⌘+C` on macOS).
 3. Wait until PySpy is done and inspect the results.
-4. Double-click a name to open the respective zKillboard in your browser.
+4. Double-click a name to open the respective zKillboard in your browser. zKillboard will open to the relevant page based on the column you have clicked on. (Or to the character page if you turn off advanced zkillboard linking)
 
 **Note**: PySpy will save its window location, size, column sizes, sorting order and transparency (slider on bottom right) and any other settings automatically and restore them the next time you launch it (settings will be reset whenever you update to a new version). If selected in the _View Menu_, PySpy will stay on top of the EVE client so long as the game runs in *window mode*.
 
@@ -39,14 +37,15 @@ If you enjoy using PySpy and would like to show your appreciation, please feel f
 
 ### New Dark Mode
 <p align="center">
-  <img alt="PySpy in action" src="https://github.com/WhiteRusssian/PySpy/blob/master/assets/v0.4_dark_screenshot.png?raw=true">
+  <img alt="PySpy in action" src="https://github.com/Eve-PySpy/PySpy/blob/master/assets/v0.4_dark_screenshot.png?raw=true">
 </p>
 
 ### Traditional Normal Mode
 <p align="center">
-  <img alt="PySpy in action" src="https://github.com/WhiteRusssian/PySpy/blob/master/assets/v0.4_light_screenshot.png?raw=true">
+  <img alt="PySpy in action" src="https://github.com/Eve-PySpy/PySpy/blob/master/assets/v0.4_light_screenshot.png?raw=true">
 </p>
 
+* **Warning**: Displays reasons why a character might be highlighted
 * **Character**: Character name.
 * **Security**: Concord security status.
 * **Corporation**: Corporation of character.
@@ -71,19 +70,30 @@ If you enjoy using PySpy and would like to show your appreciation, please feel f
 
 ## Ignore Certain Entities
 
-PySpy allows you to specify a list of ignored characters, corporations and alliances. To add entities to that list, right click on a search result. You can remove entities from this list under _Options_->_Review Ignored Entities_
+PySpy allows you to specify a list of ignored characters, corporations and alliances. To add entities to that list, right click on a search result. You can remove entities from this list under _Options_->_Review Ignored Entities_.
 
 ## Ignore all Members of your NPSI Fleet
 
 For anyone using PySpy in not-purple-shoot-it (NPSI) fleets, you can tell PySpy to temporarily ignore your fleet mates by first running PySpy on all characters in your fleet chat and then selecting _Options_->_Set NPSI Ignore List_. Once the fleet is over, you can clear the list under _Options_->_Clear NPSI List_. Your custom ignore list described above will not be affected by this action.
 
+## Highlighting
+
+PySpy allows you to specify a list of highlighted characters, corporations and alliances.
+These entities will be highlighted in a different color from the others.
+To add and remove entities to that list, right click on a search result.
+You can also review and remove entities from this list under _Options_->_Review Highlighted Entities_.
+
+Furthermore PySpy can also highlight a character if he uses Black Ops and Heavy Interdiction Cruisers or frequently has a cyno fitted.
+
 ## Installation
 
-You can download the latest release for your operating system [here](https://github.com/WhiteRusssian/PySpy/releases/latest).
+You can download the latest release for your operating system [here](https://github.com/Eve-PySpy/PySpy/releases/latest).
 
 PySpy comes as a single-file executable both in Windows and macOS. On both platforms, you can run PySpy from any folder location you like.
 
-On Linux, you can run PySpy like any other Python3 script. PySpy was developed on Python 3.6.5 but should run on any other Python3 version, so long as you install the required packages listed in [requirements.txt](https://github.com/WhiteRusssian/PySpy/blob/master/requirements.txt).
+On Linux, you can run PySpy like any other Python3 script. PySpy was developed on Python 3.6.5 but should run on any other Python3 version, so long as you install the required packages listed in [requirements.txt](https://github.com/Eve-PySpy/PySpy/blob/master/requirements.txt).
+
+If you want to build PySpy into an executable yourself, then the pyinstaller spec file is provided, you will likely need to provide the api-ms-core dlls that python requires. details of this can be found [here](https://github.com/pyinstaller/pyinstaller/issues/4047#issuecomment-460869714). You will know you need them if pyinstaller complains about missing them when run.
 
 **Note**: PySpy automatically checks for updates on launch and will notify you if a new version is available.
 
@@ -99,12 +109,11 @@ Delete the PySpy executable and remove the following files manually:
 
 Below is a non-exhaustive list of additional features I plan to add to PySpy as and when the ESI and zKillboard APIs support them:
 
-* **Custom Highlighting**: Choose a list of characters, corproations or alliances to highlight.
 * **Standings**: Only show characters that are non-blue, i.e. neutral or hostile.
 * **Highlight New Pilots**: Highlight any pilots that have entered system since last PySpy run.
 * **Improved GUI**: The current GUI is very basic and while it works, I do appreciate that it is not ideal for people who cannot use it on a second screen but actually have to overlay it on-top of their EVE client.
 
-Please feel free to add a [feature request](https://github.com/WhiteRusssian/PySpy/issues/new?template=pyspy-feature-request.md) for any improvements you would like to see in future releases.
+Please feel free to add a [feature request](https://github.com/Eve-PySpy/PySpy/issues/new?template=pyspy-feature-request.md) for any improvements you would like to see in future releases.
 
 ## Bug Reporting
 
