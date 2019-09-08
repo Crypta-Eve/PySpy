@@ -4,6 +4,22 @@ matrix:
   include:
     - name: "Python 3.7.1 on Xenial Linux"
       python: 3.7           # this works for Linux but is ignored on macOS or Windows
+      dist: xenial
+      addons:
+        apt:
+          packages: # mainly wxPython dependencies
+            - libwebkitgtk-dev
+            - libjpeg-dev
+            - libtiff-dev
+            - libgtk-3-dev
+            - libsdl1.2-dev
+            - libgstreamer-plugins-base0.10-dev
+            - freeglut3
+            - freeglut3-dev
+            - libnotify-dev
+            - libproj-dev # Proj.4 is a dependency of cartopy
+      before_install:
+        - sudo apt-get update -qq  # make sure package indexes are up to date
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
