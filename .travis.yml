@@ -29,7 +29,7 @@ notifications:
   email: false
   
 before_deploy:
-  - export RELEASE_PKG_FILE=$(ls dist/ | grep '*.exe\|*.app')
+  - export RELEASE_PKG_FILE=$(ls dist/ | grep -E "*.exe|*.app")
   - echo "deploying ${RELEASE_PKG_FILE} to GitHub releases"
 deploy:
   provider: releases
