@@ -16,7 +16,7 @@ matrix:
         - choco install python  # this install takes at least 1 min 30 sec
         - python -m pip install --upgrade pip
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-install:
+install: 
   - pip3 install --upgrade pip  # all three OSes agree about 'pip3'
   - pip3 install pathlib2
   - pip3 install -r requirements.txt
@@ -27,14 +27,15 @@ install:
 script: pyinstaller __main__.spec
 notifications:
   email: false
-
+  
 before_deploy:
   - export RELEASE_PKG_FILE=$(ls dist/ | grep '*.exe\|'*.app')
   - echo "deploying ${RELEASE_PKG_FILE} to GitHub releases"
 deploy:
   provider: releases
   api_key:
-    secure: "rroc8D1SKT5FrN5miBOTrMerxRIOBg6r6pOg3P3mcPUjY5s+VuRILp2+zxleUmkJuXnb4N47NUPYZND3NaOXbCOIJm7OjkDelZInl+OGeAkFrzumaC2tsaj6BSFyauXhLLI1mMUQJXnxSfzb3uoTHhs6xgu/gwlHH5bS9D6jmdE8JQ6+6ODopfo5Kmjk8g4m7i1OjsDH63mLAmkNs3lev4Tk0EWXxjV$  file_glob: true
+    secure: "rroc8D1SKT5FrN5miBOTrMerxRIOBg6r6pOg3P3mcPUjY5s+VuRILp2+zxleUmkJuXnb4N47NUPYZND3NaOXbCOIJm7OjkDelZInl+OGeAkFrzumaC2tsaj6BSFyauXhLLI1mMUQJXnxSfzb3uoTHhs6xgu/gwlHH5bS9D6jmdE8JQ6+6ODopfo5Kmjk8g4m7i1OjsDH63mLAmkNs3lev4Tk0EWXxjVrhHQ0hM90j+pp+YUcNwFNOiqPBWWz/n1UXjrlvsIAvfSwR4WBlUAqkKTIdNQQxtEzhYGZEst0Sr2DyXDvDId56aHr/Q5PJXgP6j+FCpBs2uR+pXkDM6QNJ9WZU0vE7oaam3IPJF4tguOSQDBHPTq5HDyDgXchxyCtdxqy2AC0Y89hwxd1O0JYySmKA/Eh+GKu+NS6Bor1xSRToH5PNkmKicV56a1jwVHIDWrve1THdAUGA5y6E0xhQq9Ofgetvj8DkHfRLwwXi8hUGWmtuAfzCeu4WtnNNRRD2V7kfdFWYJAfTbZ6PavH9HCpLJdUFhD5bL8bQOQkYoJs25ESqQWnxhIkVyJIGobQdc9w56Wgu/rHA1ooiBv315aBoE1zx+OxRFKyy+nGQS5ce6e5rdwtbnjoWlZyMu0wnL2SzIsGohe7aSrJc5eHwn+PEIlUmcy/UZ779lgG7/s="
+  file_glob: true
   file: "dist/${RELEASE_PKG_FILE}"
   skip_cleanup: true
   on:
