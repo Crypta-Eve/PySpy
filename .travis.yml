@@ -34,6 +34,8 @@ before_deploy:
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install zip ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then rm dist/PySpy ; fi
   - (cd dist; zip -r "../PySpy-$TRAVIS_OS_NAME-$TRAVIS_TAG.zip" .)
+  - ls
+  - ls dist/
 deploy:
   provider: releases
   draft: true
